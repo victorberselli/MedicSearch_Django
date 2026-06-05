@@ -8,7 +8,22 @@ def list_medics_view(request):
     city = request.GET.get("city")
     state = request.GET.get("state")
 
-    return HttpResponse("<h1>Lista de médicos!</h1>")
+    medics = Profile.objects.filter(role=2)
 
-    medics = Profile.objects.all()
-    print(medics)
+    if name is not None and name != '':
+        medics = medics.filter(user__first_name=name)
+    if speciality is not None:
+        medics = medics.filter(speciality__id=speciality)
+   
+    if neighborhood is not None:
+        medics = medics.filter(addresses__neighborhood=neighborhood)        
+    
+    else: 
+        if city is not None:
+            medics = medics.filter(addresses__neighborhood__city=city)
+        elif state is not None:
+            medics = medics.filter(addresses__neighborhood__state=state)
+
+    print(medics.all())
+
+    return HttpResponse("<h1>Lista de médicos!</h1>")
