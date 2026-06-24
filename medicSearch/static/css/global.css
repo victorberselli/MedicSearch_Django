@@ -1,14 +1,19 @@
 #content{
     min-height: calc(100vh - 112px);
 }
+
 .image-circle{
     width: 150px;
     height: 150px;
-    border-radius: 100%;
+    border-radius: 50%;
     margin: 10px auto;
     background-size: contain;
     background-color: #ccc;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
 }
+
 .btn-card {
     width: 49.5%;
     float: left;

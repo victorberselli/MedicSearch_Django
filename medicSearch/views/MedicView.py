@@ -55,8 +55,8 @@ def add_favorite_view(request):
         profile = Profile.objects.filter(user=request.user).first()
         medic = Profile.objects.filter(user__id=id).first()
         profile.save()
-        msg = "Favorito adicionado com sucesso"
-        _type = "sucess"
+        msg = "Favorito adicionado com sucesso !"
+        _type = "success"
     
     except Exception as e:
         print("Erro %s" % e)
